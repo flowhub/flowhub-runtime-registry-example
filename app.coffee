@@ -23,7 +23,7 @@ runtimeStore = [
     secret: "changeme" # Secret string used for communicating with the runtime
     type: "noflo-nodejs"  # Runtime type, eg. noflo-browser, noflo-nodejs, microflo, imgflo
     protocol: "websocket"  # Protocol used, eg. webrtc, websocket
-    address: "ws://localhost:" # URL to runtime
+    address: "ws://localhost:3555" # URL to runtime
     label: "custom registry runtime" # Human-readable runtime label
     description: "a description" # Human-readable description for the runtime
     registered: (new Date()).toJSON() # (datetime) First registered.
