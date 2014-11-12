@@ -1,0 +1,13 @@
+language: node_js
+services: redis
+node_js:
+- '0.10'
+before_script:
+- npm install -g grunt-cli
+- psql -c 'create database flowhub_test;' -U postgres
+- ./scripts/postinstall.js
+env:
+  matrix:
+  - HEROKU_POSTGRESQL_PINK_URL=postgres://postgres:@localhost/flowhub_test
+  global:
+    secure: RUDRIFo0N59/ia1EhlbXGN5eMAJe273t/WjwutvFsmTYiv7KVbFizOICoB7fNq6jRVM4F4WZF7fI93W7WR9FotOVOEftpTscJCizvegTdsw1K9pkTQpzyuN/mLsM9FlEivwNTOOBiIOP0mr+emAi2t8bx6Rh7bNqJEIv37VJh/M=

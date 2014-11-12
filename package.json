@@ -1,0 +1,29 @@
+{
+  "name": "flowhub-runtime-registry-example",
+  "version": "0.0.0",
+  "description": "Example code for Flowhub runtime registry",
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/the-grid/flowhub-runtime-registry-example.git"
+  },
+  "author": "Henri Bergius <henri.bergius@iki.fi>",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/the-grid/flowhub-runtime-registry-example/issues"
+  },
+  "dependencies": {
+    "coffee-script": "~1.7.1",
+    "express": "~3.4.8"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.4",
+    "grunt-cafe-mocha": "^0.1.12",
+    "grunt-coffeelint": "0.0.10",
+    "chai": "^1.9.1",
+    "uuid": "^1.4.1"
+  }
+}
