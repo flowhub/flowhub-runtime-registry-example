@@ -18,57 +18,48 @@ app.all '/*', (req, res, next) ->
 # Would typically be a database or query another service
 runtimeStore = [
   {
-    id:   # UUID
-    user: # Runtime owner string/UUID
-    secret:  # Secret string used for communicating with the runtime
-    address:  # URL to runtime
-    protocol:   # Protocol used, eg. webrtc, websocket
-    type:  # Runtime type, eg. noflo-browser, noflo-nodejs, microflo, imgflo
-    label: # Human-readable runtime label
-    description:             # Human-readable description for the runtime
-    registered: # (datetime) First registered.
-    seen: # (datetime) Last seen. 
+    id: "f1af0a91-ae1e-4404-abc9-2ab1ef46dc85"  # UUIDv4
+    user: "b999a62a-b900-4133-911c-d26cc3620ae1" # Runtime owner string/UUIDv4
+    secret: "changeme" # Secret string used for communicating with the runtime
+    type: "noflo-nodejs"  # Runtime type, eg. noflo-browser, noflo-nodejs, microflo, imgflo
+    protocol: "websocket"  # Protocol used, eg. webrtc, websocket
+    address: "ws://localhost:" # URL to runtime
+    label: "custom registry runtime" # Human-readable runtime label
+    description: "a description" # Human-readable description for the runtime
+    registered: (new Date()).toJSON() # (datetime) First registered.
+    seen: (new Date()).toJSON() # (datetime) Last seen. NB: Flowhub only shows recently active runtimes
   }
 
 ]
 
 # Runtime registry routes
+# Each route will get the OAuth2 bearer token from Flowhub,
+# which can be used for authentication and filtering data based on access level
 runtimes = {}
 runtimes.list = [
   (req, res) ->
-    db('runtimes')
-    .select()
-    .where('user', req.user.id)
-    .then (rows) ->
-      res.json rows
-    .otherwise (e) ->
-      res.send 500
+    console.log 'runtimes.list'
+    res.json runtimeStore
 ]
 
 runtimes.get = [
   (req, res) ->
-    db 'runtimes'
-    .select()
-    .where(
-      id: req.params.id
-      user: req.user.id
-    )
-    .then (rows) ->
-      unless rows.length
-        return res.send 404
-      res.json rows[0]
-    .otherwise (e) ->
-      res.send 500
+    id = req.params.id
+    for runtime in runtimeStore
+      if runtime.id is id
+        return res.json runtime
 ]
 
 app.get '/runtimes', runtimes.list
 app.get '/runtimes/:id', runtimes.get
 
 # Optional
-app.put '/runtimes/:id', runtimes.register
-app.post '/runtimes/:id', runtimes.ping
+###
+app.put '/runtimes/:id', runtimes.register # runtimes call to insert themselves into DB
+app.post '/runtimes/:id', runtimes.ping  # runtimes call to update their 'seen' datetime
+app.get '/runtimes/events', runtimes.events # EventSource, used to provide change notifications to clients
 app.del '/runtimes/:id', runtimes.del
-app.get '/runtimes/events', runtimes.events
+###
 
 # Safety catch-all
 process.on 'uncaughtException', (e) ->
