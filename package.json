@@ -22,8 +22,8 @@
   },
   "devDependencies": {
     "grunt": "^0.4.4",
-    "grunt-cafe-mocha": "^0.1.12",
     "grunt-coffeelint": "0.0.10",
+    "grunt-mocha-test": "^0.12.2",
     "chai": "^1.9.1",
     "uuid": "^1.4.1"
   }
