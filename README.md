@@ -17,4 +17,4 @@ This here is an open source example of how to implement such a service.
 
 ## Customizing
 
-See [./src/app.coffee](./src/app.coffee)
+See [app.coffee](./app.coffee)
