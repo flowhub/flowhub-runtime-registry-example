@@ -1,5 +1,7 @@
 # flowhub-runtime-registry-example
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/flowhub/flowhub-runtime-registry-example.svg)](https://greenkeeper.io/)
+
 [noflo-ui](https://github.com/noflo/noflo-ui), and the hosted version [Flowhub](http://app.flowhub.io)
 uses a 'registry' of runtimes in order to remember runtimes a user has, across different machines and browsers.
 
