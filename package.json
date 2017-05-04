@@ -17,14 +17,14 @@
     "url": "https://github.com/the-grid/flowhub-runtime-registry-example/issues"
   },
   "dependencies": {
-    "coffee-script": "~1.7.1",
-    "express": "~3.4.8"
+    "coffee-script": "~1.12.5",
+    "express": "~4.15.2"
   },
   "devDependencies": {
-    "grunt": "^0.4.4",
-    "grunt-coffeelint": "0.0.10",
-    "grunt-mocha-test": "^0.12.2",
-    "chai": "^1.9.1",
-    "uuid": "^1.4.1"
+    "grunt": "^1.0.1",
+    "grunt-coffeelint": "0.0.16",
+    "grunt-mocha-test": "^0.13.2",
+    "chai": "^3.5.0",
+    "uuid": "^3.0.1"
   }
 }
